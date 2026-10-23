@@ -89,6 +89,7 @@ public class DeliveryApp {
                         insertedWeight,
                         insertedSendDay,
                         insertedExpireTime);
+                allParcels.add(perishableParcel);
                 break;
             case 0:
                 System.out.println("Возврат в главное меню");
