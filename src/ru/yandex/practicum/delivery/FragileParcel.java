@@ -1,6 +1,6 @@
 package ru.yandex.practicum.delivery;
 
-public class FragileParcel extends Parcel {
+public class FragileParcel extends Parcel implements Trackable {
 
     public FragileParcel(String description, String deliveryAddress, int weight, int sendDay) {
         this.description = description;
@@ -19,5 +19,10 @@ public class FragileParcel extends Parcel {
     @Override
     public void deliver() {
         System.out.println("Посылка " + description + " доставлена по адресу " + deliveryAddress);
+    }
+
+    @Override
+    public void reportStatus(String newLocation) {
+        System.out.println("Хрупкая посылка " + description + " изменила свое местоположение на " + newLocation);
     }
 }

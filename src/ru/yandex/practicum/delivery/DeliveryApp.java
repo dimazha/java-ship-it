@@ -8,6 +8,7 @@ public class DeliveryApp {
 
     private static final Scanner scanner = new Scanner(System.in);
     private static List<Parcel> allParcels = new ArrayList<>();
+    private static List<FragileParcel> trackableParcels = new ArrayList<>();
 
     public static void main(String[] args) {
         boolean running = true;
@@ -24,6 +25,9 @@ public class DeliveryApp {
                     break;
                 case 3:
                     calculateCosts();
+                    break;
+                case 4:
+                    printTrackingStatuses();
                     break;
                 case 0:
                     running = false;
@@ -79,6 +83,7 @@ public class DeliveryApp {
                         insertedWeight,
                         insertedSendDay);
                 allParcels.add(fragileParcel);
+                trackableParcels.add(fragileParcel);
                 break;
             case 3:
                 System.out.println("Укажите срок годности посылки:");
@@ -114,6 +119,15 @@ public class DeliveryApp {
             totalCost = totalCost + parcel.calculateDeliveryCost();
         }
         System.out.println("Общая стоимость всех доставок: " + totalCost);
+    }
+
+    private static void printTrackingStatuses() {
+        System.out.println("Введите новое местоположение посылок:");
+        String insertedNewLocation = scanner.nextLine();
+
+        for (FragileParcel fragileParcel : trackableParcels) {
+            fragileParcel.reportStatus(insertedNewLocation);
+        }
     }
 
 }
