@@ -29,7 +29,7 @@ public class DeliveryApp {
                     running = false;
                     break;
                 default:
-                    System.out.println("Неверный выбор.");
+                    System.out.println("Введите номер пункта меню от 0 до 3. Вы ввели: " + choice);
             }
         }
     }
@@ -45,7 +45,10 @@ public class DeliveryApp {
     // реализуйте методы ниже
 
     private static void addParcel() {
-        // Подсказка: спросите тип посылки и необходимые поля, создайте объект и добавьте в allParcels
+        System.out.println("Укажите тип посылки:");
+        System.out.println("1 — Обычная");
+        System.out.println("2 — Хрупкая");
+        System.out.println("3 — Скоропортящаяся");
     }
 
     private static void sendParcels() {
