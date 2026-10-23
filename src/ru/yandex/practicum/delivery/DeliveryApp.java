@@ -13,7 +13,7 @@ public class DeliveryApp {
         boolean running = true;
         while (running) {
             showMenu();
-            int choice = Integer.parseInt(scanner.nextLine());
+            int choice = scanner.nextInt();
 
             switch (choice) {
                 case 1:
@@ -45,18 +45,74 @@ public class DeliveryApp {
     // реализуйте методы ниже
 
     private static void addParcel() {
+        System.out.println("Введите краткое описание посылки:");
+        String insertedDescription = scanner.nextLine();
+
+        System.out.println("Введите адрес доставки:");
+        String insertedAddress = scanner.nextLine();
+
+        System.out.println("Введите вес посылки:");
+        int insertedWeight = scanner.nextInt();
+
+        System.out.println("Введите день отправки посылки:");
+        int insertedSendDay = scanner.nextInt();
+
         System.out.println("Укажите тип посылки:");
         System.out.println("1 — Обычная");
         System.out.println("2 — Хрупкая");
         System.out.println("3 — Скоропортящаяся");
+        int insertedType = scanner.nextInt();
+
+        switch (insertedType) {
+            case 1:
+                StandardParcel standardParcel = new StandardParcel
+                        (insertedDescription,
+                        insertedAddress,
+                        insertedWeight,
+                        insertedSendDay);
+                allParcels.add(standardParcel);
+                break;
+            case 2:
+                FragileParcel fragileParcel = new FragileParcel
+                        (insertedDescription,
+                        insertedAddress,
+                        insertedWeight,
+                        insertedSendDay);
+                allParcels.add(fragileParcel);
+                break;
+            case 3:
+                System.out.println("Укажите срок годности посылки:");
+                int insertedExpireTime = scanner.nextInt();
+                PerishableParcel perishableParcel = new PerishableParcel
+                        (insertedDescription,
+                        insertedAddress,
+                        insertedWeight,
+                        insertedSendDay,
+                        insertedExpireTime);
+                break;
+            case 0:
+                System.out.println("Возврат в главное меню");
+                break;
+            default:
+                System.out.println("Введите номер типа посылки от 0 до 3. Вы ввели: " + insertedType);
+        }
+
+        System.out.println("Посылка успешно добавлена в систему");
     }
 
     private static void sendParcels() {
-        // Пройти по allParcels, вызвать packageItem() и deliver()
+        for (Parcel parcel : allParcels) {
+            parcel.packageItem();
+            parcel.deliver();
+        }
     }
 
     private static void calculateCosts() {
-        // Посчитать общую стоимость всех доставок и вывести на экран
+        int totalCost = 0;
+        for (Parcel parcel : allParcels) {
+            totalCost = totalCost + parcel.calculateDeliveryCost();
+        }
+        System.out.println("Общая стоимость всех доставок: " + totalCost);
     }
 
 }
