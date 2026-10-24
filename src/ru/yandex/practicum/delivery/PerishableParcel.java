@@ -17,7 +17,7 @@ public class PerishableParcel extends Parcel {
         System.out.println("Посылка " + description + " доставлена по адресу " + deliveryAddress);
     }
 
-    private boolean isExpired(int currentDay) {
-        return (sendDay + timeToLive <= currentDay);
+    public boolean isExpired(int currentDay) {
+        return (sendDay + timeToLive < currentDay);
     }
 }

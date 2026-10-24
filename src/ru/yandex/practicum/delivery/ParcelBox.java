@@ -10,6 +10,11 @@ public class ParcelBox<T extends Parcel> {
 
     public ParcelBox(int maxWeight) {
         this.maxWeight = maxWeight;
+        this.currentWeight = 0;
+    }
+
+    public int getParcelCount() {
+        return parcels.size();
     }
 
     public void addParcel(T parcel) {

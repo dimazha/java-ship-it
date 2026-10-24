@@ -117,7 +117,7 @@ public class DeliveryApp {
                 System.out.println("Введите номер типа посылки от 0 до 3. Вы ввели: " + insertedType);
         }
 
-        System.out.println("Посылка успешно добавлена в систему");
+        System.out.println("Посылка " + insertedDescription + " добавлена в систему");
     }
 
     private static void sendParcels() {
