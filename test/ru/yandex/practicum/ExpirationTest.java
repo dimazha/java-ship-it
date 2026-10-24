@@ -1,9 +1,7 @@
 package ru.yandex.practicum;
 
 import org.junit.jupiter.api.Test;
-import ru.yandex.practicum.delivery.Parcel;
 import ru.yandex.practicum.delivery.PerishableParcel;
-import ru.yandex.practicum.delivery.StandardParcel;
 
 import static org.junit.jupiter.api.Assertions.*;
 
