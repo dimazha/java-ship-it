@@ -23,9 +23,17 @@ public abstract class Parcel {
         }
     }
 
+    public int getWeight() {
+        return weight;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     public void packageItem() {
         System.out.println("Посылка " + description + " упакована");
-    };
+    }
 
     public abstract void deliver();
 

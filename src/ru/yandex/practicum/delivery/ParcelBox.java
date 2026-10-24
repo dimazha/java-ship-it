@@ -1,16 +1,31 @@
 package ru.yandex.practicum.delivery;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ParcelBox<T extends Parcel> {
-    private int maxWeight;
-    List<T> parcels;
+    private final int maxWeight;
+    private int currentWeight;
+    private final List<T> parcels = new ArrayList<>();
+
+    public ParcelBox(int maxWeight) {
+        this.maxWeight = maxWeight;
+    }
 
     public void addParcel(T parcel) {
-        if (parcels == null) {
-            parcels = List.of(parcel);
-        } else {
+        if (currentWeight + parcel.getWeight() <= maxWeight) {
             parcels.add(parcel);
+            currentWeight += parcel.getWeight();
+            System.out.println("Посылка " + parcel.getDescription() + " добавлена в коробку");
+        } else {
+            System.out.println("Эта посылка не влезет в коробку");
+        }
+    }
+
+    public void getAllParcels() {
+        System.out.println("Содержимое коробки:");
+        for (T parcel : parcels) {
+            System.out.println(parcel.getDescription());
         }
     }
 }
